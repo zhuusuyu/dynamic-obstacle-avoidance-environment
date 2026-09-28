@@ -1,0 +1,951 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <world name="social_orbit_8ped_validation">
+    <scene>
+      <ambient>0.46 0.46 0.48 1</ambient>
+      <background>0.93 0.96 1.0 1</background>
+      <shadows>true</shadows>
+    </scene>
+
+    <gui>
+      <camera name="user_camera">
+        <pose>0 -12 9 0 0.58 1.57</pose>
+      </camera>
+    </gui>
+
+    <include><uri>model://sun</uri></include>
+    <include><uri>model://ground_plane</uri></include>
+
+    <physics type="ode">
+      <real_time_update_rate>0</real_time_update_rate>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <ode>
+        <solver>
+          <type>quick</type>
+          <iters>150</iters>
+          <precon_iters>0</precon_iters>
+          <sor>1.4</sor>
+          <use_dynamic_moi_rescaling>1</use_dynamic_moi_rescaling>
+        </solver>
+        <constraints>
+          <cfm>0.00001</cfm>
+          <erp>0.2</erp>
+          <contact_max_correcting_vel>2000.0</contact_max_correcting_vel>
+          <contact_surface_layer>0.01</contact_surface_layer>
+        </constraints>
+      </ode>
+    </physics>
+
+    <!-- The original Hybrid internal blocks are replaced by the five obstacles below. -->
+    <model name="north_wall">
+      <static>true</static>
+      <pose>0.000000 4.000000 0.500000 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>8.300000 0.150000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>8.300000 0.150000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.56 0.57 0.60 1</ambient>
+            <diffuse>0.64 0.66 0.69 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="south_wall">
+      <static>true</static>
+      <pose>0.000000 -4.000000 0.500000 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>8.300000 0.150000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>8.300000 0.150000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.56 0.57 0.60 1</ambient>
+            <diffuse>0.64 0.66 0.69 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="west_wall">
+      <static>true</static>
+      <pose>-4.000000 0.000000 0.500000 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>0.150000 8.300000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.150000 8.300000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.56 0.57 0.60 1</ambient>
+            <diffuse>0.64 0.66 0.69 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="east_wall">
+      <static>true</static>
+      <pose>4.000000 0.000000 0.500000 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>0.150000 8.300000 1.000000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.150000 8.300000 1.000000</size></box></geometry>
+          <material>
+            <ambient>0.56 0.57 0.60 1</ambient>
+            <diffuse>0.64 0.66 0.69 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="center_cube">
+      <static>true</static>
+      <pose>0.000000 0.000000 0.300000 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><box><size>0.600000 0.600000 0.600000</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.600000 0.600000 0.600000</size></box></geometry>
+          <material>
+            <ambient>0.75 0.58 0.36 1</ambient>
+            <diffuse>0.84 0.66 0.42 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="orbit_cylinder_nw">
+      <static>true</static>
+      <pose>-1.500000 2.500000 0.500000 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><cylinder><radius>0.250000</radius><length>1.000000</length></cylinder></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><cylinder><radius>0.250000</radius><length>1.000000</length></cylinder></geometry>
+          <material>
+            <ambient>0.34 0.50 0.64 1</ambient>
+            <diffuse>0.40 0.60 0.76 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="orbit_cylinder_ne">
+      <static>true</static>
+      <pose>1.500000 2.500000 0.500000 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><cylinder><radius>0.250000</radius><length>1.000000</length></cylinder></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><cylinder><radius>0.250000</radius><length>1.000000</length></cylinder></geometry>
+          <material>
+            <ambient>0.34 0.50 0.64 1</ambient>
+            <diffuse>0.40 0.60 0.76 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="orbit_cylinder_sw">
+      <static>true</static>
+      <pose>-1.500000 -2.500000 0.500000 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><cylinder><radius>0.250000</radius><length>1.000000</length></cylinder></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><cylinder><radius>0.250000</radius><length>1.000000</length></cylinder></geometry>
+          <material>
+            <ambient>0.34 0.50 0.64 1</ambient>
+            <diffuse>0.40 0.60 0.76 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="orbit_cylinder_se">
+      <static>true</static>
+      <pose>1.500000 -2.500000 0.500000 0 0 0</pose>
+      <link name="link">
+        <collision name="collision">
+          <geometry><cylinder><radius>0.250000</radius><length>1.000000</length></cylinder></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><cylinder><radius>0.250000</radius><length>1.000000</length></cylinder></geometry>
+          <material>
+            <ambient>0.34 0.50 0.64 1</ambient>
+            <diffuse>0.40 0.60 0.76 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <!--
+      All pedestrians move clockwise at 0.08 m/s.  Seventy-two equal angular
+      segments per revolution keep each actor's visual front aligned with
+      the clockwise path tangent, preventing sideways or backward walking.
+    -->
+    <!-- Pedestrian 1: clockwise circle, center=(-1.500000, 2.500000), radius=1.000000 m. -->
+    <actor name="ped_orbit_1_visual">
+      <pose>0 0 1.020000 0 0 0</pose>
+      <skin>
+        <filename>model://pedestrian_actor_assets/walk.dae</filename>
+        <scale>1.0</scale>
+      </skin>
+      <animation name="walking">
+        <filename>model://pedestrian_actor_assets/walk.dae</filename>
+        <scale>1.0</scale>
+        <interpolate_x>true</interpolate_x>
+      </animation>
+      <script>
+        <loop>true</loop>
+        <delay_start>0.0</delay_start>
+        <auto_start>true</auto_start>
+        <trajectory id="0" type="walking">
+          <waypoint><time>0.000000</time><pose>-2.014496 3.357493 0 0 0 0.540420</pose></waypoint>
+          <waypoint><time>1.090831</time><pose>-1.937803 3.399071 0 0 0 0.453153</pose></waypoint>
+          <waypoint><time>2.181662</time><pose>-1.857777 3.433807 0 0 0 0.365887</pose></waypoint>
+          <waypoint><time>3.272492</time><pose>-1.775029 3.461436 0 0 0 0.278620</pose></waypoint>
+          <waypoint><time>4.363323</time><pose>-1.690188 3.481748 0 0 0 0.191354</pose></waypoint>
+          <waypoint><time>5.454154</time><pose>-1.603899 3.494588 0 0 0 0.104087</pose></waypoint>
+          <waypoint><time>6.544985</time><pose>-1.516820 3.499859 0 0 0 0.016821</pose></waypoint>
+          <waypoint><time>7.635815</time><pose>-1.429613 3.497520 0 0 0 -0.070446</pose></waypoint>
+          <waypoint><time>8.726646</time><pose>-1.342941 3.487589 0 0 0 -0.157712</pose></waypoint>
+          <waypoint><time>9.817477</time><pose>-1.257464 3.470143 0 0 0 -0.244979</pose></waypoint>
+          <waypoint><time>10.908308</time><pose>-1.173834 3.445312 0 0 0 -0.332245</pose></waypoint>
+          <waypoint><time>11.999139</time><pose>-1.092686 3.413288 0 0 0 -0.419512</pose></waypoint>
+          <waypoint><time>13.089969</time><pose>-1.014637 3.374313 0 0 0 -0.506778</pose></waypoint>
+          <waypoint><time>14.180800</time><pose>-0.940283 3.328684 0 0 0 -0.594045</pose></waypoint>
+          <waypoint><time>15.271631</time><pose>-0.870188 3.276748 0 0 0 -0.681311</pose></waypoint>
+          <waypoint><time>16.362462</time><pose>-0.804887 3.218900 0 0 0 -0.768577</pose></waypoint>
+          <waypoint><time>17.453293</time><pose>-0.744876 3.155581 0 0 0 -0.855844</pose></waypoint>
+          <waypoint><time>18.544123</time><pose>-0.690611 3.087273 0 0 0 -0.943110</pose></waypoint>
+          <waypoint><time>19.634954</time><pose>-0.642507 3.014496 0 0 0 -1.030377</pose></waypoint>
+          <waypoint><time>20.725785</time><pose>-0.600929 2.937803 0 0 0 -1.117643</pose></waypoint>
+          <waypoint><time>21.816616</time><pose>-0.566193 2.857777 0 0 0 -1.204910</pose></waypoint>
+          <waypoint><time>22.907446</time><pose>-0.538564 2.775029 0 0 0 -1.292176</pose></waypoint>
+          <waypoint><time>23.998277</time><pose>-0.518252 2.690188 0 0 0 -1.379443</pose></waypoint>
+          <waypoint><time>25.089108</time><pose>-0.505412 2.603899 0 0 0 -1.466709</pose></waypoint>
+          <waypoint><time>26.179939</time><pose>-0.500141 2.516820 0 0 0 -1.553976</pose></waypoint>
+          <waypoint><time>27.270770</time><pose>-0.502480 2.429613 0 0 0 -1.641242</pose></waypoint>
+          <waypoint><time>28.361600</time><pose>-0.512411 2.342941 0 0 0 -1.728509</pose></waypoint>
+          <waypoint><time>29.452431</time><pose>-0.529857 2.257464 0 0 0 -1.815775</pose></waypoint>
+          <waypoint><time>30.543262</time><pose>-0.554688 2.173834 0 0 0 -1.903041</pose></waypoint>
+          <waypoint><time>31.634093</time><pose>-0.586712 2.092686 0 0 0 -1.990308</pose></waypoint>
+          <waypoint><time>32.724923</time><pose>-0.625687 2.014637 0 0 0 -2.077574</pose></waypoint>
+          <waypoint><time>33.815754</time><pose>-0.671316 1.940283 0 0 0 -2.164841</pose></waypoint>
+          <waypoint><time>34.906585</time><pose>-0.723252 1.870188 0 0 0 -2.252107</pose></waypoint>
+          <waypoint><time>35.997416</time><pose>-0.781100 1.804887 0 0 0 -2.339374</pose></waypoint>
+          <waypoint><time>37.088247</time><pose>-0.844419 1.744876 0 0 0 -2.426640</pose></waypoint>
+          <waypoint><time>38.179077</time><pose>-0.912727 1.690611 0 0 0 -2.513907</pose></waypoint>
+          <waypoint><time>39.269908</time><pose>-0.985504 1.642507 0 0 0 -2.601173</pose></waypoint>
+          <waypoint><time>40.360739</time><pose>-1.062197 1.600929 0 0 0 -2.688440</pose></waypoint>
+          <waypoint><time>41.451570</time><pose>-1.142223 1.566193 0 0 0 -2.775706</pose></waypoint>
+          <waypoint><time>42.542401</time><pose>-1.224971 1.538564 0 0 0 -2.862973</pose></waypoint>
+          <waypoint><time>43.633231</time><pose>-1.309812 1.518252 0 0 0 -2.950239</pose></waypoint>
+          <waypoint><time>44.724062</time><pose>-1.396101 1.505412 0 0 0 -3.037505</pose></waypoint>
+          <waypoint><time>45.814893</time><pose>-1.483180 1.500141 0 0 0 -3.124772</pose></waypoint>
+          <waypoint><time>46.905724</time><pose>-1.570387 1.502480 0 0 0 3.071147</pose></waypoint>
+          <waypoint><time>47.996554</time><pose>-1.657059 1.512411 0 0 0 2.983880</pose></waypoint>
+          <waypoint><time>49.087385</time><pose>-1.742536 1.529857 0 0 0 2.896614</pose></waypoint>
+          <waypoint><time>50.178216</time><pose>-1.826166 1.554688 0 0 0 2.809348</pose></waypoint>
+          <waypoint><time>51.269047</time><pose>-1.907314 1.586712 0 0 0 2.722081</pose></waypoint>
+          <waypoint><time>52.359878</time><pose>-1.985363 1.625687 0 0 0 2.634815</pose></waypoint>
+          <waypoint><time>53.450708</time><pose>-2.059717 1.671316 0 0 0 2.547548</pose></waypoint>
+          <waypoint><time>54.541539</time><pose>-2.129812 1.723252 0 0 0 2.460282</pose></waypoint>
+          <waypoint><time>55.632370</time><pose>-2.195113 1.781100 0 0 0 2.373015</pose></waypoint>
+          <waypoint><time>56.723201</time><pose>-2.255124 1.844419 0 0 0 2.285749</pose></waypoint>
+          <waypoint><time>57.814031</time><pose>-2.309389 1.912727 0 0 0 2.198482</pose></waypoint>
+          <waypoint><time>58.904862</time><pose>-2.357493 1.985504 0 0 0 2.111216</pose></waypoint>
+          <waypoint><time>59.995693</time><pose>-2.399071 2.062197 0 0 0 2.023949</pose></waypoint>
+          <waypoint><time>61.086524</time><pose>-2.433807 2.142223 0 0 0 1.936683</pose></waypoint>
+          <waypoint><time>62.177355</time><pose>-2.461436 2.224971 0 0 0 1.849416</pose></waypoint>
+          <waypoint><time>63.268185</time><pose>-2.481748 2.309812 0 0 0 1.762150</pose></waypoint>
+          <waypoint><time>64.359016</time><pose>-2.494588 2.396101 0 0 0 1.674884</pose></waypoint>
+          <waypoint><time>65.449847</time><pose>-2.499859 2.483180 0 0 0 1.587617</pose></waypoint>
+          <waypoint><time>66.540678</time><pose>-2.497520 2.570387 0 0 0 1.500351</pose></waypoint>
+          <waypoint><time>67.631509</time><pose>-2.487589 2.657059 0 0 0 1.413084</pose></waypoint>
+          <waypoint><time>68.722339</time><pose>-2.470143 2.742536 0 0 0 1.325818</pose></waypoint>
+          <waypoint><time>69.813170</time><pose>-2.445312 2.826166 0 0 0 1.238551</pose></waypoint>
+          <waypoint><time>70.904001</time><pose>-2.413288 2.907314 0 0 0 1.151285</pose></waypoint>
+          <waypoint><time>71.994832</time><pose>-2.374313 2.985363 0 0 0 1.064018</pose></waypoint>
+          <waypoint><time>73.085662</time><pose>-2.328684 3.059717 0 0 0 0.976752</pose></waypoint>
+          <waypoint><time>74.176493</time><pose>-2.276748 3.129812 0 0 0 0.889485</pose></waypoint>
+          <waypoint><time>75.267324</time><pose>-2.218900 3.195113 0 0 0 0.802219</pose></waypoint>
+          <waypoint><time>76.358155</time><pose>-2.155581 3.255124 0 0 0 0.714952</pose></waypoint>
+          <waypoint><time>77.448986</time><pose>-2.087273 3.309389 0 0 0 0.627686</pose></waypoint>
+          <waypoint><time>78.539816</time><pose>-2.014496 3.357493 0 0 0 0.540420</pose></waypoint>
+        </trajectory>
+      </script>
+    </actor>
+
+    <!-- Pedestrian 2: clockwise circle, center=(1.500000, 2.500000), radius=1.000000 m. -->
+    <actor name="ped_orbit_2_visual">
+      <pose>0 0 1.020000 0 0 0</pose>
+      <skin>
+        <filename>model://pedestrian_actor_assets/walk.dae</filename>
+        <scale>1.0</scale>
+      </skin>
+      <animation name="walking">
+        <filename>model://pedestrian_actor_assets/walk.dae</filename>
+        <scale>1.0</scale>
+        <interpolate_x>true</interpolate_x>
+      </animation>
+      <script>
+        <loop>true</loop>
+        <delay_start>0.0</delay_start>
+        <auto_start>true</auto_start>
+        <trajectory id="0" type="walking">
+          <waypoint><time>0.000000</time><pose>2.014496 3.357493 0 0 0 -0.540420</pose></waypoint>
+          <waypoint><time>1.090831</time><pose>2.087273 3.309389 0 0 0 -0.627686</pose></waypoint>
+          <waypoint><time>2.181662</time><pose>2.155581 3.255124 0 0 0 -0.714952</pose></waypoint>
+          <waypoint><time>3.272492</time><pose>2.218900 3.195113 0 0 0 -0.802219</pose></waypoint>
+          <waypoint><time>4.363323</time><pose>2.276748 3.129812 0 0 0 -0.889485</pose></waypoint>
+          <waypoint><time>5.454154</time><pose>2.328684 3.059717 0 0 0 -0.976752</pose></waypoint>
+          <waypoint><time>6.544985</time><pose>2.374313 2.985363 0 0 0 -1.064018</pose></waypoint>
+          <waypoint><time>7.635815</time><pose>2.413288 2.907314 0 0 0 -1.151285</pose></waypoint>
+          <waypoint><time>8.726646</time><pose>2.445312 2.826166 0 0 0 -1.238551</pose></waypoint>
+          <waypoint><time>9.817477</time><pose>2.470143 2.742536 0 0 0 -1.325818</pose></waypoint>
+          <waypoint><time>10.908308</time><pose>2.487589 2.657059 0 0 0 -1.413084</pose></waypoint>
+          <waypoint><time>11.999139</time><pose>2.497520 2.570387 0 0 0 -1.500351</pose></waypoint>
+          <waypoint><time>13.089969</time><pose>2.499859 2.483180 0 0 0 -1.587617</pose></waypoint>
+          <waypoint><time>14.180800</time><pose>2.494588 2.396101 0 0 0 -1.674884</pose></waypoint>
+          <waypoint><time>15.271631</time><pose>2.481748 2.309812 0 0 0 -1.762150</pose></waypoint>
+          <waypoint><time>16.362462</time><pose>2.461436 2.224971 0 0 0 -1.849416</pose></waypoint>
+          <waypoint><time>17.453293</time><pose>2.433807 2.142223 0 0 0 -1.936683</pose></waypoint>
+          <waypoint><time>18.544123</time><pose>2.399071 2.062197 0 0 0 -2.023949</pose></waypoint>
+          <waypoint><time>19.634954</time><pose>2.357493 1.985504 0 0 0 -2.111216</pose></waypoint>
+          <waypoint><time>20.725785</time><pose>2.309389 1.912727 0 0 0 -2.198482</pose></waypoint>
+          <waypoint><time>21.816616</time><pose>2.255124 1.844419 0 0 0 -2.285749</pose></waypoint>
+          <waypoint><time>22.907446</time><pose>2.195113 1.781100 0 0 0 -2.373015</pose></waypoint>
+          <waypoint><time>23.998277</time><pose>2.129812 1.723252 0 0 0 -2.460282</pose></waypoint>
+          <waypoint><time>25.089108</time><pose>2.059717 1.671316 0 0 0 -2.547548</pose></waypoint>
+          <waypoint><time>26.179939</time><pose>1.985363 1.625687 0 0 0 -2.634815</pose></waypoint>
+          <waypoint><time>27.270770</time><pose>1.907314 1.586712 0 0 0 -2.722081</pose></waypoint>
+          <waypoint><time>28.361600</time><pose>1.826166 1.554688 0 0 0 -2.809348</pose></waypoint>
+          <waypoint><time>29.452431</time><pose>1.742536 1.529857 0 0 0 -2.896614</pose></waypoint>
+          <waypoint><time>30.543262</time><pose>1.657059 1.512411 0 0 0 -2.983880</pose></waypoint>
+          <waypoint><time>31.634093</time><pose>1.570387 1.502480 0 0 0 -3.071147</pose></waypoint>
+          <waypoint><time>32.724923</time><pose>1.483180 1.500141 0 0 0 3.124772</pose></waypoint>
+          <waypoint><time>33.815754</time><pose>1.396101 1.505412 0 0 0 3.037505</pose></waypoint>
+          <waypoint><time>34.906585</time><pose>1.309812 1.518252 0 0 0 2.950239</pose></waypoint>
+          <waypoint><time>35.997416</time><pose>1.224971 1.538564 0 0 0 2.862973</pose></waypoint>
+          <waypoint><time>37.088247</time><pose>1.142223 1.566193 0 0 0 2.775706</pose></waypoint>
+          <waypoint><time>38.179077</time><pose>1.062197 1.600929 0 0 0 2.688440</pose></waypoint>
+          <waypoint><time>39.269908</time><pose>0.985504 1.642507 0 0 0 2.601173</pose></waypoint>
+          <waypoint><time>40.360739</time><pose>0.912727 1.690611 0 0 0 2.513907</pose></waypoint>
+          <waypoint><time>41.451570</time><pose>0.844419 1.744876 0 0 0 2.426640</pose></waypoint>
+          <waypoint><time>42.542401</time><pose>0.781100 1.804887 0 0 0 2.339374</pose></waypoint>
+          <waypoint><time>43.633231</time><pose>0.723252 1.870188 0 0 0 2.252107</pose></waypoint>
+          <waypoint><time>44.724062</time><pose>0.671316 1.940283 0 0 0 2.164841</pose></waypoint>
+          <waypoint><time>45.814893</time><pose>0.625687 2.014637 0 0 0 2.077574</pose></waypoint>
+          <waypoint><time>46.905724</time><pose>0.586712 2.092686 0 0 0 1.990308</pose></waypoint>
+          <waypoint><time>47.996554</time><pose>0.554688 2.173834 0 0 0 1.903041</pose></waypoint>
+          <waypoint><time>49.087385</time><pose>0.529857 2.257464 0 0 0 1.815775</pose></waypoint>
+          <waypoint><time>50.178216</time><pose>0.512411 2.342941 0 0 0 1.728509</pose></waypoint>
+          <waypoint><time>51.269047</time><pose>0.502480 2.429613 0 0 0 1.641242</pose></waypoint>
+          <waypoint><time>52.359878</time><pose>0.500141 2.516820 0 0 0 1.553976</pose></waypoint>
+          <waypoint><time>53.450708</time><pose>0.505412 2.603899 0 0 0 1.466709</pose></waypoint>
+          <waypoint><time>54.541539</time><pose>0.518252 2.690188 0 0 0 1.379443</pose></waypoint>
+          <waypoint><time>55.632370</time><pose>0.538564 2.775029 0 0 0 1.292176</pose></waypoint>
+          <waypoint><time>56.723201</time><pose>0.566193 2.857777 0 0 0 1.204910</pose></waypoint>
+          <waypoint><time>57.814031</time><pose>0.600929 2.937803 0 0 0 1.117643</pose></waypoint>
+          <waypoint><time>58.904862</time><pose>0.642507 3.014496 0 0 0 1.030377</pose></waypoint>
+          <waypoint><time>59.995693</time><pose>0.690611 3.087273 0 0 0 0.943110</pose></waypoint>
+          <waypoint><time>61.086524</time><pose>0.744876 3.155581 0 0 0 0.855844</pose></waypoint>
+          <waypoint><time>62.177355</time><pose>0.804887 3.218900 0 0 0 0.768577</pose></waypoint>
+          <waypoint><time>63.268185</time><pose>0.870188 3.276748 0 0 0 0.681311</pose></waypoint>
+          <waypoint><time>64.359016</time><pose>0.940283 3.328684 0 0 0 0.594045</pose></waypoint>
+          <waypoint><time>65.449847</time><pose>1.014637 3.374313 0 0 0 0.506778</pose></waypoint>
+          <waypoint><time>66.540678</time><pose>1.092686 3.413288 0 0 0 0.419512</pose></waypoint>
+          <waypoint><time>67.631509</time><pose>1.173834 3.445312 0 0 0 0.332245</pose></waypoint>
+          <waypoint><time>68.722339</time><pose>1.257464 3.470143 0 0 0 0.244979</pose></waypoint>
+          <waypoint><time>69.813170</time><pose>1.342941 3.487589 0 0 0 0.157712</pose></waypoint>
+          <waypoint><time>70.904001</time><pose>1.429613 3.497520 0 0 0 0.070446</pose></waypoint>
+          <waypoint><time>71.994832</time><pose>1.516820 3.499859 0 0 0 -0.016821</pose></waypoint>
+          <waypoint><time>73.085662</time><pose>1.603899 3.494588 0 0 0 -0.104087</pose></waypoint>
+          <waypoint><time>74.176493</time><pose>1.690188 3.481748 0 0 0 -0.191354</pose></waypoint>
+          <waypoint><time>75.267324</time><pose>1.775029 3.461436 0 0 0 -0.278620</pose></waypoint>
+          <waypoint><time>76.358155</time><pose>1.857777 3.433807 0 0 0 -0.365887</pose></waypoint>
+          <waypoint><time>77.448986</time><pose>1.937803 3.399071 0 0 0 -0.453153</pose></waypoint>
+          <waypoint><time>78.539816</time><pose>2.014496 3.357493 0 0 0 -0.540420</pose></waypoint>
+        </trajectory>
+      </script>
+    </actor>
+
+    <!-- Pedestrian 3: clockwise circle, center=(-1.500000, -2.500000), radius=1.000000 m. -->
+    <actor name="ped_orbit_3_visual">
+      <pose>0 0 1.020000 0 0 0</pose>
+      <skin>
+        <filename>model://pedestrian_actor_assets/walk.dae</filename>
+        <scale>1.0</scale>
+      </skin>
+      <animation name="walking">
+        <filename>model://pedestrian_actor_assets/walk.dae</filename>
+        <scale>1.0</scale>
+        <interpolate_x>true</interpolate_x>
+      </animation>
+      <script>
+        <loop>true</loop>
+        <delay_start>0.0</delay_start>
+        <auto_start>true</auto_start>
+        <trajectory id="0" type="walking">
+          <waypoint><time>0.000000</time><pose>-2.014496 -3.357493 0 0 0 2.601173</pose></waypoint>
+          <waypoint><time>1.090831</time><pose>-2.087273 -3.309389 0 0 0 2.513907</pose></waypoint>
+          <waypoint><time>2.181662</time><pose>-2.155581 -3.255124 0 0 0 2.426640</pose></waypoint>
+          <waypoint><time>3.272492</time><pose>-2.218900 -3.195113 0 0 0 2.339374</pose></waypoint>
+          <waypoint><time>4.363323</time><pose>-2.276748 -3.129812 0 0 0 2.252107</pose></waypoint>
+          <waypoint><time>5.454154</time><pose>-2.328684 -3.059717 0 0 0 2.164841</pose></waypoint>
+          <waypoint><time>6.544985</time><pose>-2.374313 -2.985363 0 0 0 2.077574</pose></waypoint>
+          <waypoint><time>7.635815</time><pose>-2.413288 -2.907314 0 0 0 1.990308</pose></waypoint>
+          <waypoint><time>8.726646</time><pose>-2.445312 -2.826166 0 0 0 1.903041</pose></waypoint>
+          <waypoint><time>9.817477</time><pose>-2.470143 -2.742536 0 0 0 1.815775</pose></waypoint>
+          <waypoint><time>10.908308</time><pose>-2.487589 -2.657059 0 0 0 1.728509</pose></waypoint>
+          <waypoint><time>11.999139</time><pose>-2.497520 -2.570387 0 0 0 1.641242</pose></waypoint>
+          <waypoint><time>13.089969</time><pose>-2.499859 -2.483180 0 0 0 1.553976</pose></waypoint>
+          <waypoint><time>14.180800</time><pose>-2.494588 -2.396101 0 0 0 1.466709</pose></waypoint>
+          <waypoint><time>15.271631</time><pose>-2.481748 -2.309812 0 0 0 1.379443</pose></waypoint>
+          <waypoint><time>16.362462</time><pose>-2.461436 -2.224971 0 0 0 1.292176</pose></waypoint>
+          <waypoint><time>17.453293</time><pose>-2.433807 -2.142223 0 0 0 1.204910</pose></waypoint>
+          <waypoint><time>18.544123</time><pose>-2.399071 -2.062197 0 0 0 1.117643</pose></waypoint>
+          <waypoint><time>19.634954</time><pose>-2.357493 -1.985504 0 0 0 1.030377</pose></waypoint>
+          <waypoint><time>20.725785</time><pose>-2.309389 -1.912727 0 0 0 0.943110</pose></waypoint>
+          <waypoint><time>21.816616</time><pose>-2.255124 -1.844419 0 0 0 0.855844</pose></waypoint>
+          <waypoint><time>22.907446</time><pose>-2.195113 -1.781100 0 0 0 0.768577</pose></waypoint>
+          <waypoint><time>23.998277</time><pose>-2.129812 -1.723252 0 0 0 0.681311</pose></waypoint>
+          <waypoint><time>25.089108</time><pose>-2.059717 -1.671316 0 0 0 0.594045</pose></waypoint>
+          <waypoint><time>26.179939</time><pose>-1.985363 -1.625687 0 0 0 0.506778</pose></waypoint>
+          <waypoint><time>27.270770</time><pose>-1.907314 -1.586712 0 0 0 0.419512</pose></waypoint>
+          <waypoint><time>28.361600</time><pose>-1.826166 -1.554688 0 0 0 0.332245</pose></waypoint>
+          <waypoint><time>29.452431</time><pose>-1.742536 -1.529857 0 0 0 0.244979</pose></waypoint>
+          <waypoint><time>30.543262</time><pose>-1.657059 -1.512411 0 0 0 0.157712</pose></waypoint>
+          <waypoint><time>31.634093</time><pose>-1.570387 -1.502480 0 0 0 0.070446</pose></waypoint>
+          <waypoint><time>32.724923</time><pose>-1.483180 -1.500141 0 0 0 -0.016821</pose></waypoint>
+          <waypoint><time>33.815754</time><pose>-1.396101 -1.505412 0 0 0 -0.104087</pose></waypoint>
+          <waypoint><time>34.906585</time><pose>-1.309812 -1.518252 0 0 0 -0.191354</pose></waypoint>
+          <waypoint><time>35.997416</time><pose>-1.224971 -1.538564 0 0 0 -0.278620</pose></waypoint>
+          <waypoint><time>37.088247</time><pose>-1.142223 -1.566193 0 0 0 -0.365887</pose></waypoint>
+          <waypoint><time>38.179077</time><pose>-1.062197 -1.600929 0 0 0 -0.453153</pose></waypoint>
+          <waypoint><time>39.269908</time><pose>-0.985504 -1.642507 0 0 0 -0.540420</pose></waypoint>
+          <waypoint><time>40.360739</time><pose>-0.912727 -1.690611 0 0 0 -0.627686</pose></waypoint>
+          <waypoint><time>41.451570</time><pose>-0.844419 -1.744876 0 0 0 -0.714952</pose></waypoint>
+          <waypoint><time>42.542401</time><pose>-0.781100 -1.804887 0 0 0 -0.802219</pose></waypoint>
+          <waypoint><time>43.633231</time><pose>-0.723252 -1.870188 0 0 0 -0.889485</pose></waypoint>
+          <waypoint><time>44.724062</time><pose>-0.671316 -1.940283 0 0 0 -0.976752</pose></waypoint>
+          <waypoint><time>45.814893</time><pose>-0.625687 -2.014637 0 0 0 -1.064018</pose></waypoint>
+          <waypoint><time>46.905724</time><pose>-0.586712 -2.092686 0 0 0 -1.151285</pose></waypoint>
+          <waypoint><time>47.996554</time><pose>-0.554688 -2.173834 0 0 0 -1.238551</pose></waypoint>
+          <waypoint><time>49.087385</time><pose>-0.529857 -2.257464 0 0 0 -1.325818</pose></waypoint>
+          <waypoint><time>50.178216</time><pose>-0.512411 -2.342941 0 0 0 -1.413084</pose></waypoint>
+          <waypoint><time>51.269047</time><pose>-0.502480 -2.429613 0 0 0 -1.500351</pose></waypoint>
+          <waypoint><time>52.359878</time><pose>-0.500141 -2.516820 0 0 0 -1.587617</pose></waypoint>
+          <waypoint><time>53.450708</time><pose>-0.505412 -2.603899 0 0 0 -1.674884</pose></waypoint>
+          <waypoint><time>54.541539</time><pose>-0.518252 -2.690188 0 0 0 -1.762150</pose></waypoint>
+          <waypoint><time>55.632370</time><pose>-0.538564 -2.775029 0 0 0 -1.849416</pose></waypoint>
+          <waypoint><time>56.723201</time><pose>-0.566193 -2.857777 0 0 0 -1.936683</pose></waypoint>
+          <waypoint><time>57.814031</time><pose>-0.600929 -2.937803 0 0 0 -2.023949</pose></waypoint>
+          <waypoint><time>58.904862</time><pose>-0.642507 -3.014496 0 0 0 -2.111216</pose></waypoint>
+          <waypoint><time>59.995693</time><pose>-0.690611 -3.087273 0 0 0 -2.198482</pose></waypoint>
+          <waypoint><time>61.086524</time><pose>-0.744876 -3.155581 0 0 0 -2.285749</pose></waypoint>
+          <waypoint><time>62.177355</time><pose>-0.804887 -3.218900 0 0 0 -2.373015</pose></waypoint>
+          <waypoint><time>63.268185</time><pose>-0.870188 -3.276748 0 0 0 -2.460282</pose></waypoint>
+          <waypoint><time>64.359016</time><pose>-0.940283 -3.328684 0 0 0 -2.547548</pose></waypoint>
+          <waypoint><time>65.449847</time><pose>-1.014637 -3.374313 0 0 0 -2.634815</pose></waypoint>
+          <waypoint><time>66.540678</time><pose>-1.092686 -3.413288 0 0 0 -2.722081</pose></waypoint>
+          <waypoint><time>67.631509</time><pose>-1.173834 -3.445312 0 0 0 -2.809348</pose></waypoint>
+          <waypoint><time>68.722339</time><pose>-1.257464 -3.470143 0 0 0 -2.896614</pose></waypoint>
+          <waypoint><time>69.813170</time><pose>-1.342941 -3.487589 0 0 0 -2.983880</pose></waypoint>
+          <waypoint><time>70.904001</time><pose>-1.429613 -3.497520 0 0 0 -3.071147</pose></waypoint>
+          <waypoint><time>71.994832</time><pose>-1.516820 -3.499859 0 0 0 3.124772</pose></waypoint>
+          <waypoint><time>73.085662</time><pose>-1.603899 -3.494588 0 0 0 3.037505</pose></waypoint>
+          <waypoint><time>74.176493</time><pose>-1.690188 -3.481748 0 0 0 2.950239</pose></waypoint>
+          <waypoint><time>75.267324</time><pose>-1.775029 -3.461436 0 0 0 2.862973</pose></waypoint>
+          <waypoint><time>76.358155</time><pose>-1.857777 -3.433807 0 0 0 2.775706</pose></waypoint>
+          <waypoint><time>77.448986</time><pose>-1.937803 -3.399071 0 0 0 2.688440</pose></waypoint>
+          <waypoint><time>78.539816</time><pose>-2.014496 -3.357493 0 0 0 2.601173</pose></waypoint>
+        </trajectory>
+      </script>
+    </actor>
+
+    <!-- Pedestrian 4: clockwise circle, center=(1.500000, -2.500000), radius=1.000000 m. -->
+    <actor name="ped_orbit_4_visual">
+      <pose>0 0 1.020000 0 0 0</pose>
+      <skin>
+        <filename>model://pedestrian_actor_assets/walk.dae</filename>
+        <scale>1.0</scale>
+      </skin>
+      <animation name="walking">
+        <filename>model://pedestrian_actor_assets/walk.dae</filename>
+        <scale>1.0</scale>
+        <interpolate_x>true</interpolate_x>
+      </animation>
+      <script>
+        <loop>true</loop>
+        <delay_start>0.0</delay_start>
+        <auto_start>true</auto_start>
+        <trajectory id="0" type="walking">
+          <waypoint><time>0.000000</time><pose>2.014496 -3.357493 0 0 0 -2.601173</pose></waypoint>
+          <waypoint><time>1.090831</time><pose>1.937803 -3.399071 0 0 0 -2.688440</pose></waypoint>
+          <waypoint><time>2.181662</time><pose>1.857777 -3.433807 0 0 0 -2.775706</pose></waypoint>
+          <waypoint><time>3.272492</time><pose>1.775029 -3.461436 0 0 0 -2.862973</pose></waypoint>
+          <waypoint><time>4.363323</time><pose>1.690188 -3.481748 0 0 0 -2.950239</pose></waypoint>
+          <waypoint><time>5.454154</time><pose>1.603899 -3.494588 0 0 0 -3.037505</pose></waypoint>
+          <waypoint><time>6.544985</time><pose>1.516820 -3.499859 0 0 0 -3.124772</pose></waypoint>
+          <waypoint><time>7.635815</time><pose>1.429613 -3.497520 0 0 0 3.071147</pose></waypoint>
+          <waypoint><time>8.726646</time><pose>1.342941 -3.487589 0 0 0 2.983880</pose></waypoint>
+          <waypoint><time>9.817477</time><pose>1.257464 -3.470143 0 0 0 2.896614</pose></waypoint>
+          <waypoint><time>10.908308</time><pose>1.173834 -3.445312 0 0 0 2.809348</pose></waypoint>
+          <waypoint><time>11.999139</time><pose>1.092686 -3.413288 0 0 0 2.722081</pose></waypoint>
+          <waypoint><time>13.089969</time><pose>1.014637 -3.374313 0 0 0 2.634815</pose></waypoint>
+          <waypoint><time>14.180800</time><pose>0.940283 -3.328684 0 0 0 2.547548</pose></waypoint>
+          <waypoint><time>15.271631</time><pose>0.870188 -3.276748 0 0 0 2.460282</pose></waypoint>
+          <waypoint><time>16.362462</time><pose>0.804887 -3.218900 0 0 0 2.373015</pose></waypoint>
+          <waypoint><time>17.453293</time><pose>0.744876 -3.155581 0 0 0 2.285749</pose></waypoint>
+          <waypoint><time>18.544123</time><pose>0.690611 -3.087273 0 0 0 2.198482</pose></waypoint>
+          <waypoint><time>19.634954</time><pose>0.642507 -3.014496 0 0 0 2.111216</pose></waypoint>
+          <waypoint><time>20.725785</time><pose>0.600929 -2.937803 0 0 0 2.023949</pose></waypoint>
+          <waypoint><time>21.816616</time><pose>0.566193 -2.857777 0 0 0 1.936683</pose></waypoint>
+          <waypoint><time>22.907446</time><pose>0.538564 -2.775029 0 0 0 1.849416</pose></waypoint>
+          <waypoint><time>23.998277</time><pose>0.518252 -2.690188 0 0 0 1.762150</pose></waypoint>
+          <waypoint><time>25.089108</time><pose>0.505412 -2.603899 0 0 0 1.674884</pose></waypoint>
+          <waypoint><time>26.179939</time><pose>0.500141 -2.516820 0 0 0 1.587617</pose></waypoint>
+          <waypoint><time>27.270770</time><pose>0.502480 -2.429613 0 0 0 1.500351</pose></waypoint>
+          <waypoint><time>28.361600</time><pose>0.512411 -2.342941 0 0 0 1.413084</pose></waypoint>
+          <waypoint><time>29.452431</time><pose>0.529857 -2.257464 0 0 0 1.325818</pose></waypoint>
+          <waypoint><time>30.543262</time><pose>0.554688 -2.173834 0 0 0 1.238551</pose></waypoint>
+          <waypoint><time>31.634093</time><pose>0.586712 -2.092686 0 0 0 1.151285</pose></waypoint>
+          <waypoint><time>32.724923</time><pose>0.625687 -2.014637 0 0 0 1.064018</pose></waypoint>
+          <waypoint><time>33.815754</time><pose>0.671316 -1.940283 0 0 0 0.976752</pose></waypoint>
+          <waypoint><time>34.906585</time><pose>0.723252 -1.870188 0 0 0 0.889485</pose></waypoint>
+          <waypoint><time>35.997416</time><pose>0.781100 -1.804887 0 0 0 0.802219</pose></waypoint>
+          <waypoint><time>37.088247</time><pose>0.844419 -1.744876 0 0 0 0.714952</pose></waypoint>
+          <waypoint><time>38.179077</time><pose>0.912727 -1.690611 0 0 0 0.627686</pose></waypoint>
+          <waypoint><time>39.269908</time><pose>0.985504 -1.642507 0 0 0 0.540420</pose></waypoint>
+          <waypoint><time>40.360739</time><pose>1.062197 -1.600929 0 0 0 0.453153</pose></waypoint>
+          <waypoint><time>41.451570</time><pose>1.142223 -1.566193 0 0 0 0.365887</pose></waypoint>
+          <waypoint><time>42.542401</time><pose>1.224971 -1.538564 0 0 0 0.278620</pose></waypoint>
+          <waypoint><time>43.633231</time><pose>1.309812 -1.518252 0 0 0 0.191354</pose></waypoint>
+          <waypoint><time>44.724062</time><pose>1.396101 -1.505412 0 0 0 0.104087</pose></waypoint>
+          <waypoint><time>45.814893</time><pose>1.483180 -1.500141 0 0 0 0.016821</pose></waypoint>
+          <waypoint><time>46.905724</time><pose>1.570387 -1.502480 0 0 0 -0.070446</pose></waypoint>
+          <waypoint><time>47.996554</time><pose>1.657059 -1.512411 0 0 0 -0.157712</pose></waypoint>
+          <waypoint><time>49.087385</time><pose>1.742536 -1.529857 0 0 0 -0.244979</pose></waypoint>
+          <waypoint><time>50.178216</time><pose>1.826166 -1.554688 0 0 0 -0.332245</pose></waypoint>
+          <waypoint><time>51.269047</time><pose>1.907314 -1.586712 0 0 0 -0.419512</pose></waypoint>
+          <waypoint><time>52.359878</time><pose>1.985363 -1.625687 0 0 0 -0.506778</pose></waypoint>
+          <waypoint><time>53.450708</time><pose>2.059717 -1.671316 0 0 0 -0.594045</pose></waypoint>
+          <waypoint><time>54.541539</time><pose>2.129812 -1.723252 0 0 0 -0.681311</pose></waypoint>
+          <waypoint><time>55.632370</time><pose>2.195113 -1.781100 0 0 0 -0.768577</pose></waypoint>
+          <waypoint><time>56.723201</time><pose>2.255124 -1.844419 0 0 0 -0.855844</pose></waypoint>
+          <waypoint><time>57.814031</time><pose>2.309389 -1.912727 0 0 0 -0.943110</pose></waypoint>
+          <waypoint><time>58.904862</time><pose>2.357493 -1.985504 0 0 0 -1.030377</pose></waypoint>
+          <waypoint><time>59.995693</time><pose>2.399071 -2.062197 0 0 0 -1.117643</pose></waypoint>
+          <waypoint><time>61.086524</time><pose>2.433807 -2.142223 0 0 0 -1.204910</pose></waypoint>
+          <waypoint><time>62.177355</time><pose>2.461436 -2.224971 0 0 0 -1.292176</pose></waypoint>
+          <waypoint><time>63.268185</time><pose>2.481748 -2.309812 0 0 0 -1.379443</pose></waypoint>
+          <waypoint><time>64.359016</time><pose>2.494588 -2.396101 0 0 0 -1.466709</pose></waypoint>
+          <waypoint><time>65.449847</time><pose>2.499859 -2.483180 0 0 0 -1.553976</pose></waypoint>
+          <waypoint><time>66.540678</time><pose>2.497520 -2.570387 0 0 0 -1.641242</pose></waypoint>
+          <waypoint><time>67.631509</time><pose>2.487589 -2.657059 0 0 0 -1.728509</pose></waypoint>
+          <waypoint><time>68.722339</time><pose>2.470143 -2.742536 0 0 0 -1.815775</pose></waypoint>
+          <waypoint><time>69.813170</time><pose>2.445312 -2.826166 0 0 0 -1.903041</pose></waypoint>
+          <waypoint><time>70.904001</time><pose>2.413288 -2.907314 0 0 0 -1.990308</pose></waypoint>
+          <waypoint><time>71.994832</time><pose>2.374313 -2.985363 0 0 0 -2.077574</pose></waypoint>
+          <waypoint><time>73.085662</time><pose>2.328684 -3.059717 0 0 0 -2.164841</pose></waypoint>
+          <waypoint><time>74.176493</time><pose>2.276748 -3.129812 0 0 0 -2.252107</pose></waypoint>
+          <waypoint><time>75.267324</time><pose>2.218900 -3.195113 0 0 0 -2.339374</pose></waypoint>
+          <waypoint><time>76.358155</time><pose>2.155581 -3.255124 0 0 0 -2.426640</pose></waypoint>
+          <waypoint><time>77.448986</time><pose>2.087273 -3.309389 0 0 0 -2.513907</pose></waypoint>
+          <waypoint><time>78.539816</time><pose>2.014496 -3.357493 0 0 0 -2.601173</pose></waypoint>
+        </trajectory>
+      </script>
+    </actor>
+
+    <!-- Pedestrian 5: clockwise circle, center=(0.000000, 0.000000), radius=1.500000 m. -->
+    <actor name="ped_orbit_5_visual">
+      <pose>0 0 1.020000 0 0 0</pose>
+      <skin>
+        <filename>model://pedestrian_actor_assets/walk.dae</filename>
+        <scale>1.0</scale>
+      </skin>
+      <animation name="walking">
+        <filename>model://pedestrian_actor_assets/walk.dae</filename>
+        <scale>1.0</scale>
+        <interpolate_x>true</interpolate_x>
+      </animation>
+      <script>
+        <loop>true</loop>
+        <delay_start>0.0</delay_start>
+        <auto_start>true</auto_start>
+        <trajectory id="0" type="walking">
+          <waypoint><time>0.000000</time><pose>1.500000 0.000000 0 0 0 -1.570796</pose></waypoint>
+          <waypoint><time>1.636246</time><pose>1.494292 -0.130734 0 0 0 -1.658063</pose></waypoint>
+          <waypoint><time>3.272492</time><pose>1.477212 -0.260472 0 0 0 -1.745329</pose></waypoint>
+          <waypoint><time>4.908739</time><pose>1.448889 -0.388229 0 0 0 -1.832596</pose></waypoint>
+          <waypoint><time>6.544985</time><pose>1.409539 -0.513030 0 0 0 -1.919862</pose></waypoint>
+          <waypoint><time>8.181231</time><pose>1.359462 -0.633927 0 0 0 -2.007129</pose></waypoint>
+          <waypoint><time>9.817477</time><pose>1.299038 -0.750000 0 0 0 -2.094395</pose></waypoint>
+          <waypoint><time>11.453723</time><pose>1.228728 -0.860365 0 0 0 -2.181662</pose></waypoint>
+          <waypoint><time>13.089969</time><pose>1.149067 -0.964181 0 0 0 -2.268928</pose></waypoint>
+          <waypoint><time>14.726216</time><pose>1.060660 -1.060660 0 0 0 -2.356194</pose></waypoint>
+          <waypoint><time>16.362462</time><pose>0.964181 -1.149067 0 0 0 -2.443461</pose></waypoint>
+          <waypoint><time>17.998708</time><pose>0.860365 -1.228728 0 0 0 -2.530727</pose></waypoint>
+          <waypoint><time>19.634954</time><pose>0.750000 -1.299038 0 0 0 -2.617994</pose></waypoint>
+          <waypoint><time>21.271200</time><pose>0.633927 -1.359462 0 0 0 -2.705260</pose></waypoint>
+          <waypoint><time>22.907446</time><pose>0.513030 -1.409539 0 0 0 -2.792527</pose></waypoint>
+          <waypoint><time>24.543693</time><pose>0.388229 -1.448889 0 0 0 -2.879793</pose></waypoint>
+          <waypoint><time>26.179939</time><pose>0.260472 -1.477212 0 0 0 -2.967060</pose></waypoint>
+          <waypoint><time>27.816185</time><pose>0.130734 -1.494292 0 0 0 -3.054326</pose></waypoint>
+          <waypoint><time>29.452431</time><pose>0.000000 -1.500000 0 0 0 -3.141593</pose></waypoint>
+          <waypoint><time>31.088677</time><pose>-0.130734 -1.494292 0 0 0 3.054326</pose></waypoint>
+          <waypoint><time>32.724923</time><pose>-0.260472 -1.477212 0 0 0 2.967060</pose></waypoint>
+          <waypoint><time>34.361170</time><pose>-0.388229 -1.448889 0 0 0 2.879793</pose></waypoint>
+          <waypoint><time>35.997416</time><pose>-0.513030 -1.409539 0 0 0 2.792527</pose></waypoint>
+          <waypoint><time>37.633662</time><pose>-0.633927 -1.359462 0 0 0 2.705260</pose></waypoint>
+          <waypoint><time>39.269908</time><pose>-0.750000 -1.299038 0 0 0 2.617994</pose></waypoint>
+          <waypoint><time>40.906154</time><pose>-0.860365 -1.228728 0 0 0 2.530727</pose></waypoint>
+          <waypoint><time>42.542401</time><pose>-0.964181 -1.149067 0 0 0 2.443461</pose></waypoint>
+          <waypoint><time>44.178647</time><pose>-1.060660 -1.060660 0 0 0 2.356194</pose></waypoint>
+          <waypoint><time>45.814893</time><pose>-1.149067 -0.964181 0 0 0 2.268928</pose></waypoint>
+          <waypoint><time>47.451139</time><pose>-1.228728 -0.860365 0 0 0 2.181662</pose></waypoint>
+          <waypoint><time>49.087385</time><pose>-1.299038 -0.750000 0 0 0 2.094395</pose></waypoint>
+          <waypoint><time>50.723631</time><pose>-1.359462 -0.633927 0 0 0 2.007129</pose></waypoint>
+          <waypoint><time>52.359878</time><pose>-1.409539 -0.513030 0 0 0 1.919862</pose></waypoint>
+          <waypoint><time>53.996124</time><pose>-1.448889 -0.388229 0 0 0 1.832596</pose></waypoint>
+          <waypoint><time>55.632370</time><pose>-1.477212 -0.260472 0 0 0 1.745329</pose></waypoint>
+          <waypoint><time>57.268616</time><pose>-1.494292 -0.130734 0 0 0 1.658063</pose></waypoint>
+          <waypoint><time>58.904862</time><pose>-1.500000 0.000000 0 0 0 1.570796</pose></waypoint>
+          <waypoint><time>60.541108</time><pose>-1.494292 0.130734 0 0 0 1.483530</pose></waypoint>
+          <waypoint><time>62.177355</time><pose>-1.477212 0.260472 0 0 0 1.396263</pose></waypoint>
+          <waypoint><time>63.813601</time><pose>-1.448889 0.388229 0 0 0 1.308997</pose></waypoint>
+          <waypoint><time>65.449847</time><pose>-1.409539 0.513030 0 0 0 1.221730</pose></waypoint>
+          <waypoint><time>67.086093</time><pose>-1.359462 0.633927 0 0 0 1.134464</pose></waypoint>
+          <waypoint><time>68.722339</time><pose>-1.299038 0.750000 0 0 0 1.047198</pose></waypoint>
+          <waypoint><time>70.358585</time><pose>-1.228728 0.860365 0 0 0 0.959931</pose></waypoint>
+          <waypoint><time>71.994832</time><pose>-1.149067 0.964181 0 0 0 0.872665</pose></waypoint>
+          <waypoint><time>73.631078</time><pose>-1.060660 1.060660 0 0 0 0.785398</pose></waypoint>
+          <waypoint><time>75.267324</time><pose>-0.964181 1.149067 0 0 0 0.698132</pose></waypoint>
+          <waypoint><time>76.903570</time><pose>-0.860365 1.228728 0 0 0 0.610865</pose></waypoint>
+          <waypoint><time>78.539816</time><pose>-0.750000 1.299038 0 0 0 0.523599</pose></waypoint>
+          <waypoint><time>80.176063</time><pose>-0.633927 1.359462 0 0 0 0.436332</pose></waypoint>
+          <waypoint><time>81.812309</time><pose>-0.513030 1.409539 0 0 0 0.349066</pose></waypoint>
+          <waypoint><time>83.448555</time><pose>-0.388229 1.448889 0 0 0 0.261799</pose></waypoint>
+          <waypoint><time>85.084801</time><pose>-0.260472 1.477212 0 0 0 0.174533</pose></waypoint>
+          <waypoint><time>86.721047</time><pose>-0.130734 1.494292 0 0 0 0.087266</pose></waypoint>
+          <waypoint><time>88.357293</time><pose>0.000000 1.500000 0 0 0 0.000000</pose></waypoint>
+          <waypoint><time>89.993540</time><pose>0.130734 1.494292 0 0 0 -0.087266</pose></waypoint>
+          <waypoint><time>91.629786</time><pose>0.260472 1.477212 0 0 0 -0.174533</pose></waypoint>
+          <waypoint><time>93.266032</time><pose>0.388229 1.448889 0 0 0 -0.261799</pose></waypoint>
+          <waypoint><time>94.902278</time><pose>0.513030 1.409539 0 0 0 -0.349066</pose></waypoint>
+          <waypoint><time>96.538524</time><pose>0.633927 1.359462 0 0 0 -0.436332</pose></waypoint>
+          <waypoint><time>98.174770</time><pose>0.750000 1.299038 0 0 0 -0.523599</pose></waypoint>
+          <waypoint><time>99.811017</time><pose>0.860365 1.228728 0 0 0 -0.610865</pose></waypoint>
+          <waypoint><time>101.447263</time><pose>0.964181 1.149067 0 0 0 -0.698132</pose></waypoint>
+          <waypoint><time>103.083509</time><pose>1.060660 1.060660 0 0 0 -0.785398</pose></waypoint>
+          <waypoint><time>104.719755</time><pose>1.149067 0.964181 0 0 0 -0.872665</pose></waypoint>
+          <waypoint><time>106.356001</time><pose>1.228728 0.860365 0 0 0 -0.959931</pose></waypoint>
+          <waypoint><time>107.992247</time><pose>1.299038 0.750000 0 0 0 -1.047198</pose></waypoint>
+          <waypoint><time>109.628494</time><pose>1.359462 0.633927 0 0 0 -1.134464</pose></waypoint>
+          <waypoint><time>111.264740</time><pose>1.409539 0.513030 0 0 0 -1.221730</pose></waypoint>
+          <waypoint><time>112.900986</time><pose>1.448889 0.388229 0 0 0 -1.308997</pose></waypoint>
+          <waypoint><time>114.537232</time><pose>1.477212 0.260472 0 0 0 -1.396263</pose></waypoint>
+          <waypoint><time>116.173478</time><pose>1.494292 0.130734 0 0 0 -1.483530</pose></waypoint>
+          <waypoint><time>117.809725</time><pose>1.500000 0.000000 0 0 0 -1.570796</pose></waypoint>
+        </trajectory>
+      </script>
+    </actor>
+
+    <!-- Pedestrian 6: clockwise circle, center=(0.000000, 0.000000), radius=1.500000 m. -->
+    <actor name="ped_orbit_6_visual">
+      <pose>0 0 1.020000 0 0 0</pose>
+      <skin>
+        <filename>model://pedestrian_actor_assets/walk.dae</filename>
+        <scale>1.0</scale>
+      </skin>
+      <animation name="walking">
+        <filename>model://pedestrian_actor_assets/walk.dae</filename>
+        <scale>1.0</scale>
+        <interpolate_x>true</interpolate_x>
+      </animation>
+      <script>
+        <loop>true</loop>
+        <delay_start>0.0</delay_start>
+        <auto_start>true</auto_start>
+        <trajectory id="0" type="walking">
+          <waypoint><time>0.000000</time><pose>0.000000 1.500000 0 0 0 0.000000</pose></waypoint>
+          <waypoint><time>1.636246</time><pose>0.130734 1.494292 0 0 0 -0.087266</pose></waypoint>
+          <waypoint><time>3.272492</time><pose>0.260472 1.477212 0 0 0 -0.174533</pose></waypoint>
+          <waypoint><time>4.908739</time><pose>0.388229 1.448889 0 0 0 -0.261799</pose></waypoint>
+          <waypoint><time>6.544985</time><pose>0.513030 1.409539 0 0 0 -0.349066</pose></waypoint>
+          <waypoint><time>8.181231</time><pose>0.633927 1.359462 0 0 0 -0.436332</pose></waypoint>
+          <waypoint><time>9.817477</time><pose>0.750000 1.299038 0 0 0 -0.523599</pose></waypoint>
+          <waypoint><time>11.453723</time><pose>0.860365 1.228728 0 0 0 -0.610865</pose></waypoint>
+          <waypoint><time>13.089969</time><pose>0.964181 1.149067 0 0 0 -0.698132</pose></waypoint>
+          <waypoint><time>14.726216</time><pose>1.060660 1.060660 0 0 0 -0.785398</pose></waypoint>
+          <waypoint><time>16.362462</time><pose>1.149067 0.964181 0 0 0 -0.872665</pose></waypoint>
+          <waypoint><time>17.998708</time><pose>1.228728 0.860365 0 0 0 -0.959931</pose></waypoint>
+          <waypoint><time>19.634954</time><pose>1.299038 0.750000 0 0 0 -1.047198</pose></waypoint>
+          <waypoint><time>21.271200</time><pose>1.359462 0.633927 0 0 0 -1.134464</pose></waypoint>
+          <waypoint><time>22.907446</time><pose>1.409539 0.513030 0 0 0 -1.221730</pose></waypoint>
+          <waypoint><time>24.543693</time><pose>1.448889 0.388229 0 0 0 -1.308997</pose></waypoint>
+          <waypoint><time>26.179939</time><pose>1.477212 0.260472 0 0 0 -1.396263</pose></waypoint>
+          <waypoint><time>27.816185</time><pose>1.494292 0.130734 0 0 0 -1.483530</pose></waypoint>
+          <waypoint><time>29.452431</time><pose>1.500000 0.000000 0 0 0 -1.570796</pose></waypoint>
+          <waypoint><time>31.088677</time><pose>1.494292 -0.130734 0 0 0 -1.658063</pose></waypoint>
+          <waypoint><time>32.724923</time><pose>1.477212 -0.260472 0 0 0 -1.745329</pose></waypoint>
+          <waypoint><time>34.361170</time><pose>1.448889 -0.388229 0 0 0 -1.832596</pose></waypoint>
+          <waypoint><time>35.997416</time><pose>1.409539 -0.513030 0 0 0 -1.919862</pose></waypoint>
+          <waypoint><time>37.633662</time><pose>1.359462 -0.633927 0 0 0 -2.007129</pose></waypoint>
+          <waypoint><time>39.269908</time><pose>1.299038 -0.750000 0 0 0 -2.094395</pose></waypoint>
+          <waypoint><time>40.906154</time><pose>1.228728 -0.860365 0 0 0 -2.181662</pose></waypoint>
+          <waypoint><time>42.542401</time><pose>1.149067 -0.964181 0 0 0 -2.268928</pose></waypoint>
+          <waypoint><time>44.178647</time><pose>1.060660 -1.060660 0 0 0 -2.356194</pose></waypoint>
+          <waypoint><time>45.814893</time><pose>0.964181 -1.149067 0 0 0 -2.443461</pose></waypoint>
+          <waypoint><time>47.451139</time><pose>0.860365 -1.228728 0 0 0 -2.530727</pose></waypoint>
+          <waypoint><time>49.087385</time><pose>0.750000 -1.299038 0 0 0 -2.617994</pose></waypoint>
+          <waypoint><time>50.723631</time><pose>0.633927 -1.359462 0 0 0 -2.705260</pose></waypoint>
+          <waypoint><time>52.359878</time><pose>0.513030 -1.409539 0 0 0 -2.792527</pose></waypoint>
+          <waypoint><time>53.996124</time><pose>0.388229 -1.448889 0 0 0 -2.879793</pose></waypoint>
+          <waypoint><time>55.632370</time><pose>0.260472 -1.477212 0 0 0 -2.967060</pose></waypoint>
+          <waypoint><time>57.268616</time><pose>0.130734 -1.494292 0 0 0 -3.054326</pose></waypoint>
+          <waypoint><time>58.904862</time><pose>0.000000 -1.500000 0 0 0 -3.141593</pose></waypoint>
+          <waypoint><time>60.541108</time><pose>-0.130734 -1.494292 0 0 0 3.054326</pose></waypoint>
+          <waypoint><time>62.177355</time><pose>-0.260472 -1.477212 0 0 0 2.967060</pose></waypoint>
+          <waypoint><time>63.813601</time><pose>-0.388229 -1.448889 0 0 0 2.879793</pose></waypoint>
+          <waypoint><time>65.449847</time><pose>-0.513030 -1.409539 0 0 0 2.792527</pose></waypoint>
+          <waypoint><time>67.086093</time><pose>-0.633927 -1.359462 0 0 0 2.705260</pose></waypoint>
+          <waypoint><time>68.722339</time><pose>-0.750000 -1.299038 0 0 0 2.617994</pose></waypoint>
+          <waypoint><time>70.358585</time><pose>-0.860365 -1.228728 0 0 0 2.530727</pose></waypoint>
+          <waypoint><time>71.994832</time><pose>-0.964181 -1.149067 0 0 0 2.443461</pose></waypoint>
+          <waypoint><time>73.631078</time><pose>-1.060660 -1.060660 0 0 0 2.356194</pose></waypoint>
+          <waypoint><time>75.267324</time><pose>-1.149067 -0.964181 0 0 0 2.268928</pose></waypoint>
+          <waypoint><time>76.903570</time><pose>-1.228728 -0.860365 0 0 0 2.181662</pose></waypoint>
+          <waypoint><time>78.539816</time><pose>-1.299038 -0.750000 0 0 0 2.094395</pose></waypoint>
+          <waypoint><time>80.176063</time><pose>-1.359462 -0.633927 0 0 0 2.007129</pose></waypoint>
+          <waypoint><time>81.812309</time><pose>-1.409539 -0.513030 0 0 0 1.919862</pose></waypoint>
+          <waypoint><time>83.448555</time><pose>-1.448889 -0.388229 0 0 0 1.832596</pose></waypoint>
+          <waypoint><time>85.084801</time><pose>-1.477212 -0.260472 0 0 0 1.745329</pose></waypoint>
+          <waypoint><time>86.721047</time><pose>-1.494292 -0.130734 0 0 0 1.658063</pose></waypoint>
+          <waypoint><time>88.357293</time><pose>-1.500000 0.000000 0 0 0 1.570796</pose></waypoint>
+          <waypoint><time>89.993540</time><pose>-1.494292 0.130734 0 0 0 1.483530</pose></waypoint>
+          <waypoint><time>91.629786</time><pose>-1.477212 0.260472 0 0 0 1.396263</pose></waypoint>
+          <waypoint><time>93.266032</time><pose>-1.448889 0.388229 0 0 0 1.308997</pose></waypoint>
+          <waypoint><time>94.902278</time><pose>-1.409539 0.513030 0 0 0 1.221730</pose></waypoint>
+          <waypoint><time>96.538524</time><pose>-1.359462 0.633927 0 0 0 1.134464</pose></waypoint>
+          <waypoint><time>98.174770</time><pose>-1.299038 0.750000 0 0 0 1.047198</pose></waypoint>
+          <waypoint><time>99.811017</time><pose>-1.228728 0.860365 0 0 0 0.959931</pose></waypoint>
+          <waypoint><time>101.447263</time><pose>-1.149067 0.964181 0 0 0 0.872665</pose></waypoint>
+          <waypoint><time>103.083509</time><pose>-1.060660 1.060660 0 0 0 0.785398</pose></waypoint>
+          <waypoint><time>104.719755</time><pose>-0.964181 1.149067 0 0 0 0.698132</pose></waypoint>
+          <waypoint><time>106.356001</time><pose>-0.860365 1.228728 0 0 0 0.610865</pose></waypoint>
+          <waypoint><time>107.992247</time><pose>-0.750000 1.299038 0 0 0 0.523599</pose></waypoint>
+          <waypoint><time>109.628494</time><pose>-0.633927 1.359462 0 0 0 0.436332</pose></waypoint>
+          <waypoint><time>111.264740</time><pose>-0.513030 1.409539 0 0 0 0.349066</pose></waypoint>
+          <waypoint><time>112.900986</time><pose>-0.388229 1.448889 0 0 0 0.261799</pose></waypoint>
+          <waypoint><time>114.537232</time><pose>-0.260472 1.477212 0 0 0 0.174533</pose></waypoint>
+          <waypoint><time>116.173478</time><pose>-0.130734 1.494292 0 0 0 0.087266</pose></waypoint>
+          <waypoint><time>117.809725</time><pose>0.000000 1.500000 0 0 0 0.000000</pose></waypoint>
+        </trajectory>
+      </script>
+    </actor>
+
+    <!-- Pedestrian 7: clockwise circle, center=(0.000000, 0.000000), radius=1.500000 m. -->
+    <actor name="ped_orbit_7_visual">
+      <pose>0 0 1.020000 0 0 0</pose>
+      <skin>
+        <filename>model://pedestrian_actor_assets/walk.dae</filename>
+        <scale>1.0</scale>
+      </skin>
+      <animation name="walking">
+        <filename>model://pedestrian_actor_assets/walk.dae</filename>
+        <scale>1.0</scale>
+        <interpolate_x>true</interpolate_x>
+      </animation>
+      <script>
+        <loop>true</loop>
+        <delay_start>0.0</delay_start>
+        <auto_start>true</auto_start>
+        <trajectory id="0" type="walking">
+          <waypoint><time>0.000000</time><pose>0.000000 -1.500000 0 0 0 -3.141593</pose></waypoint>
+          <waypoint><time>1.636246</time><pose>-0.130734 -1.494292 0 0 0 3.054326</pose></waypoint>
+          <waypoint><time>3.272492</time><pose>-0.260472 -1.477212 0 0 0 2.967060</pose></waypoint>
+          <waypoint><time>4.908739</time><pose>-0.388229 -1.448889 0 0 0 2.879793</pose></waypoint>
+          <waypoint><time>6.544985</time><pose>-0.513030 -1.409539 0 0 0 2.792527</pose></waypoint>
+          <waypoint><time>8.181231</time><pose>-0.633927 -1.359462 0 0 0 2.705260</pose></waypoint>
+          <waypoint><time>9.817477</time><pose>-0.750000 -1.299038 0 0 0 2.617994</pose></waypoint>
+          <waypoint><time>11.453723</time><pose>-0.860365 -1.228728 0 0 0 2.530727</pose></waypoint>
+          <waypoint><time>13.089969</time><pose>-0.964181 -1.149067 0 0 0 2.443461</pose></waypoint>
+          <waypoint><time>14.726216</time><pose>-1.060660 -1.060660 0 0 0 2.356194</pose></waypoint>
+          <waypoint><time>16.362462</time><pose>-1.149067 -0.964181 0 0 0 2.268928</pose></waypoint>
+          <waypoint><time>17.998708</time><pose>-1.228728 -0.860365 0 0 0 2.181662</pose></waypoint>
+          <waypoint><time>19.634954</time><pose>-1.299038 -0.750000 0 0 0 2.094395</pose></waypoint>
+          <waypoint><time>21.271200</time><pose>-1.359462 -0.633927 0 0 0 2.007129</pose></waypoint>
+          <waypoint><time>22.907446</time><pose>-1.409539 -0.513030 0 0 0 1.919862</pose></waypoint>
+          <waypoint><time>24.543693</time><pose>-1.448889 -0.388229 0 0 0 1.832596</pose></waypoint>
+          <waypoint><time>26.179939</time><pose>-1.477212 -0.260472 0 0 0 1.745329</pose></waypoint>
+          <waypoint><time>27.816185</time><pose>-1.494292 -0.130734 0 0 0 1.658063</pose></waypoint>
+          <waypoint><time>29.452431</time><pose>-1.500000 0.000000 0 0 0 1.570796</pose></waypoint>
+          <waypoint><time>31.088677</time><pose>-1.494292 0.130734 0 0 0 1.483530</pose></waypoint>
+          <waypoint><time>32.724923</time><pose>-1.477212 0.260472 0 0 0 1.396263</pose></waypoint>
+          <waypoint><time>34.361170</time><pose>-1.448889 0.388229 0 0 0 1.308997</pose></waypoint>
+          <waypoint><time>35.997416</time><pose>-1.409539 0.513030 0 0 0 1.221730</pose></waypoint>
+          <waypoint><time>37.633662</time><pose>-1.359462 0.633927 0 0 0 1.134464</pose></waypoint>
+          <waypoint><time>39.269908</time><pose>-1.299038 0.750000 0 0 0 1.047198</pose></waypoint>
+          <waypoint><time>40.906154</time><pose>-1.228728 0.860365 0 0 0 0.959931</pose></waypoint>
+          <waypoint><time>42.542401</time><pose>-1.149067 0.964181 0 0 0 0.872665</pose></waypoint>
+          <waypoint><time>44.178647</time><pose>-1.060660 1.060660 0 0 0 0.785398</pose></waypoint>
+          <waypoint><time>45.814893</time><pose>-0.964181 1.149067 0 0 0 0.698132</pose></waypoint>
+          <waypoint><time>47.451139</time><pose>-0.860365 1.228728 0 0 0 0.610865</pose></waypoint>
+          <waypoint><time>49.087385</time><pose>-0.750000 1.299038 0 0 0 0.523599</pose></waypoint>
+          <waypoint><time>50.723631</time><pose>-0.633927 1.359462 0 0 0 0.436332</pose></waypoint>
+          <waypoint><time>52.359878</time><pose>-0.513030 1.409539 0 0 0 0.349066</pose></waypoint>
+          <waypoint><time>53.996124</time><pose>-0.388229 1.448889 0 0 0 0.261799</pose></waypoint>
+          <waypoint><time>55.632370</time><pose>-0.260472 1.477212 0 0 0 0.174533</pose></waypoint>
+          <waypoint><time>57.268616</time><pose>-0.130734 1.494292 0 0 0 0.087266</pose></waypoint>
+          <waypoint><time>58.904862</time><pose>0.000000 1.500000 0 0 0 0.000000</pose></waypoint>
+          <waypoint><time>60.541108</time><pose>0.130734 1.494292 0 0 0 -0.087266</pose></waypoint>
+          <waypoint><time>62.177355</time><pose>0.260472 1.477212 0 0 0 -0.174533</pose></waypoint>
+          <waypoint><time>63.813601</time><pose>0.388229 1.448889 0 0 0 -0.261799</pose></waypoint>
+          <waypoint><time>65.449847</time><pose>0.513030 1.409539 0 0 0 -0.349066</pose></waypoint>
+          <waypoint><time>67.086093</time><pose>0.633927 1.359462 0 0 0 -0.436332</pose></waypoint>
+          <waypoint><time>68.722339</time><pose>0.750000 1.299038 0 0 0 -0.523599</pose></waypoint>
+          <waypoint><time>70.358585</time><pose>0.860365 1.228728 0 0 0 -0.610865</pose></waypoint>
+          <waypoint><time>71.994832</time><pose>0.964181 1.149067 0 0 0 -0.698132</pose></waypoint>
+          <waypoint><time>73.631078</time><pose>1.060660 1.060660 0 0 0 -0.785398</pose></waypoint>
+          <waypoint><time>75.267324</time><pose>1.149067 0.964181 0 0 0 -0.872665</pose></waypoint>
+          <waypoint><time>76.903570</time><pose>1.228728 0.860365 0 0 0 -0.959931</pose></waypoint>
+          <waypoint><time>78.539816</time><pose>1.299038 0.750000 0 0 0 -1.047198</pose></waypoint>
+          <waypoint><time>80.176063</time><pose>1.359462 0.633927 0 0 0 -1.134464</pose></waypoint>
+          <waypoint><time>81.812309</time><pose>1.409539 0.513030 0 0 0 -1.221730</pose></waypoint>
+          <waypoint><time>83.448555</time><pose>1.448889 0.388229 0 0 0 -1.308997</pose></waypoint>
+          <waypoint><time>85.084801</time><pose>1.477212 0.260472 0 0 0 -1.396263</pose></waypoint>
+          <waypoint><time>86.721047</time><pose>1.494292 0.130734 0 0 0 -1.483530</pose></waypoint>
+          <waypoint><time>88.357293</time><pose>1.500000 0.000000 0 0 0 -1.570796</pose></waypoint>
+          <waypoint><time>89.993540</time><pose>1.494292 -0.130734 0 0 0 -1.658063</pose></waypoint>
+          <waypoint><time>91.629786</time><pose>1.477212 -0.260472 0 0 0 -1.745329</pose></waypoint>
+          <waypoint><time>93.266032</time><pose>1.448889 -0.388229 0 0 0 -1.832596</pose></waypoint>
+          <waypoint><time>94.902278</time><pose>1.409539 -0.513030 0 0 0 -1.919862</pose></waypoint>
+          <waypoint><time>96.538524</time><pose>1.359462 -0.633927 0 0 0 -2.007129</pose></waypoint>
+          <waypoint><time>98.174770</time><pose>1.299038 -0.750000 0 0 0 -2.094395</pose></waypoint>
+          <waypoint><time>99.811017</time><pose>1.228728 -0.860365 0 0 0 -2.181662</pose></waypoint>
+          <waypoint><time>101.447263</time><pose>1.149067 -0.964181 0 0 0 -2.268928</pose></waypoint>
+          <waypoint><time>103.083509</time><pose>1.060660 -1.060660 0 0 0 -2.356194</pose></waypoint>
+          <waypoint><time>104.719755</time><pose>0.964181 -1.149067 0 0 0 -2.443461</pose></waypoint>
+          <waypoint><time>106.356001</time><pose>0.860365 -1.228728 0 0 0 -2.530727</pose></waypoint>
+          <waypoint><time>107.992247</time><pose>0.750000 -1.299038 0 0 0 -2.617994</pose></waypoint>
+          <waypoint><time>109.628494</time><pose>0.633927 -1.359462 0 0 0 -2.705260</pose></waypoint>
+          <waypoint><time>111.264740</time><pose>0.513030 -1.409539 0 0 0 -2.792527</pose></waypoint>
+          <waypoint><time>112.900986</time><pose>0.388229 -1.448889 0 0 0 -2.879793</pose></waypoint>
+          <waypoint><time>114.537232</time><pose>0.260472 -1.477212 0 0 0 -2.967060</pose></waypoint>
+          <waypoint><time>116.173478</time><pose>0.130734 -1.494292 0 0 0 -3.054326</pose></waypoint>
+          <waypoint><time>117.809725</time><pose>0.000000 -1.500000 0 0 0 -3.141593</pose></waypoint>
+        </trajectory>
+      </script>
+    </actor>
+
+    <!-- Pedestrian 8: clockwise circle, center=(0.000000, 0.000000), radius=1.500000 m. -->
+    <actor name="ped_orbit_8_visual">
+      <pose>0 0 1.020000 0 0 0</pose>
+      <skin>
+        <filename>model://pedestrian_actor_assets/walk.dae</filename>
+        <scale>1.0</scale>
+      </skin>
+      <animation name="walking">
+        <filename>model://pedestrian_actor_assets/walk.dae</filename>
+        <scale>1.0</scale>
+        <interpolate_x>true</interpolate_x>
+      </animation>
+      <script>
+        <loop>true</loop>
+        <delay_start>0.0</delay_start>
+        <auto_start>true</auto_start>
+        <trajectory id="0" type="walking">
+          <waypoint><time>0.000000</time><pose>-1.500000 0.000000 0 0 0 1.570796</pose></waypoint>
+          <waypoint><time>1.636246</time><pose>-1.494292 0.130734 0 0 0 1.483530</pose></waypoint>
+          <waypoint><time>3.272492</time><pose>-1.477212 0.260472 0 0 0 1.396263</pose></waypoint>
+          <waypoint><time>4.908739</time><pose>-1.448889 0.388229 0 0 0 1.308997</pose></waypoint>
+          <waypoint><time>6.544985</time><pose>-1.409539 0.513030 0 0 0 1.221730</pose></waypoint>
+          <waypoint><time>8.181231</time><pose>-1.359462 0.633927 0 0 0 1.134464</pose></waypoint>
+          <waypoint><time>9.817477</time><pose>-1.299038 0.750000 0 0 0 1.047198</pose></waypoint>
+          <waypoint><time>11.453723</time><pose>-1.228728 0.860365 0 0 0 0.959931</pose></waypoint>
+          <waypoint><time>13.089969</time><pose>-1.149067 0.964181 0 0 0 0.872665</pose></waypoint>
+          <waypoint><time>14.726216</time><pose>-1.060660 1.060660 0 0 0 0.785398</pose></waypoint>
+          <waypoint><time>16.362462</time><pose>-0.964181 1.149067 0 0 0 0.698132</pose></waypoint>
+          <waypoint><time>17.998708</time><pose>-0.860365 1.228728 0 0 0 0.610865</pose></waypoint>
+          <waypoint><time>19.634954</time><pose>-0.750000 1.299038 0 0 0 0.523599</pose></waypoint>
+          <waypoint><time>21.271200</time><pose>-0.633927 1.359462 0 0 0 0.436332</pose></waypoint>
+          <waypoint><time>22.907446</time><pose>-0.513030 1.409539 0 0 0 0.349066</pose></waypoint>
+          <waypoint><time>24.543693</time><pose>-0.388229 1.448889 0 0 0 0.261799</pose></waypoint>
+          <waypoint><time>26.179939</time><pose>-0.260472 1.477212 0 0 0 0.174533</pose></waypoint>
+          <waypoint><time>27.816185</time><pose>-0.130734 1.494292 0 0 0 0.087266</pose></waypoint>
+          <waypoint><time>29.452431</time><pose>0.000000 1.500000 0 0 0 0.000000</pose></waypoint>
+          <waypoint><time>31.088677</time><pose>0.130734 1.494292 0 0 0 -0.087266</pose></waypoint>
+          <waypoint><time>32.724923</time><pose>0.260472 1.477212 0 0 0 -0.174533</pose></waypoint>
+          <waypoint><time>34.361170</time><pose>0.388229 1.448889 0 0 0 -0.261799</pose></waypoint>
+          <waypoint><time>35.997416</time><pose>0.513030 1.409539 0 0 0 -0.349066</pose></waypoint>
+          <waypoint><time>37.633662</time><pose>0.633927 1.359462 0 0 0 -0.436332</pose></waypoint>
+          <waypoint><time>39.269908</time><pose>0.750000 1.299038 0 0 0 -0.523599</pose></waypoint>
+          <waypoint><time>40.906154</time><pose>0.860365 1.228728 0 0 0 -0.610865</pose></waypoint>
+          <waypoint><time>42.542401</time><pose>0.964181 1.149067 0 0 0 -0.698132</pose></waypoint>
+          <waypoint><time>44.178647</time><pose>1.060660 1.060660 0 0 0 -0.785398</pose></waypoint>
+          <waypoint><time>45.814893</time><pose>1.149067 0.964181 0 0 0 -0.872665</pose></waypoint>
+          <waypoint><time>47.451139</time><pose>1.228728 0.860365 0 0 0 -0.959931</pose></waypoint>
+          <waypoint><time>49.087385</time><pose>1.299038 0.750000 0 0 0 -1.047198</pose></waypoint>
+          <waypoint><time>50.723631</time><pose>1.359462 0.633927 0 0 0 -1.134464</pose></waypoint>
+          <waypoint><time>52.359878</time><pose>1.409539 0.513030 0 0 0 -1.221730</pose></waypoint>
+          <waypoint><time>53.996124</time><pose>1.448889 0.388229 0 0 0 -1.308997</pose></waypoint>
+          <waypoint><time>55.632370</time><pose>1.477212 0.260472 0 0 0 -1.396263</pose></waypoint>
+          <waypoint><time>57.268616</time><pose>1.494292 0.130734 0 0 0 -1.483530</pose></waypoint>
+          <waypoint><time>58.904862</time><pose>1.500000 0.000000 0 0 0 -1.570796</pose></waypoint>
+          <waypoint><time>60.541108</time><pose>1.494292 -0.130734 0 0 0 -1.658063</pose></waypoint>
+          <waypoint><time>62.177355</time><pose>1.477212 -0.260472 0 0 0 -1.745329</pose></waypoint>
+          <waypoint><time>63.813601</time><pose>1.448889 -0.388229 0 0 0 -1.832596</pose></waypoint>
+          <waypoint><time>65.449847</time><pose>1.409539 -0.513030 0 0 0 -1.919862</pose></waypoint>
+          <waypoint><time>67.086093</time><pose>1.359462 -0.633927 0 0 0 -2.007129</pose></waypoint>
+          <waypoint><time>68.722339</time><pose>1.299038 -0.750000 0 0 0 -2.094395</pose></waypoint>
+          <waypoint><time>70.358585</time><pose>1.228728 -0.860365 0 0 0 -2.181662</pose></waypoint>
+          <waypoint><time>71.994832</time><pose>1.149067 -0.964181 0 0 0 -2.268928</pose></waypoint>
+          <waypoint><time>73.631078</time><pose>1.060660 -1.060660 0 0 0 -2.356194</pose></waypoint>
+          <waypoint><time>75.267324</time><pose>0.964181 -1.149067 0 0 0 -2.443461</pose></waypoint>
+          <waypoint><time>76.903570</time><pose>0.860365 -1.228728 0 0 0 -2.530727</pose></waypoint>
+          <waypoint><time>78.539816</time><pose>0.750000 -1.299038 0 0 0 -2.617994</pose></waypoint>
+          <waypoint><time>80.176063</time><pose>0.633927 -1.359462 0 0 0 -2.705260</pose></waypoint>
+          <waypoint><time>81.812309</time><pose>0.513030 -1.409539 0 0 0 -2.792527</pose></waypoint>
+          <waypoint><time>83.448555</time><pose>0.388229 -1.448889 0 0 0 -2.879793</pose></waypoint>
+          <waypoint><time>85.084801</time><pose>0.260472 -1.477212 0 0 0 -2.967060</pose></waypoint>
+          <waypoint><time>86.721047</time><pose>0.130734 -1.494292 0 0 0 -3.054326</pose></waypoint>
+          <waypoint><time>88.357293</time><pose>0.000000 -1.500000 0 0 0 -3.141593</pose></waypoint>
+          <waypoint><time>89.993540</time><pose>-0.130734 -1.494292 0 0 0 3.054326</pose></waypoint>
+          <waypoint><time>91.629786</time><pose>-0.260472 -1.477212 0 0 0 2.967060</pose></waypoint>
+          <waypoint><time>93.266032</time><pose>-0.388229 -1.448889 0 0 0 2.879793</pose></waypoint>
+          <waypoint><time>94.902278</time><pose>-0.513030 -1.409539 0 0 0 2.792527</pose></waypoint>
+          <waypoint><time>96.538524</time><pose>-0.633927 -1.359462 0 0 0 2.705260</pose></waypoint>
+          <waypoint><time>98.174770</time><pose>-0.750000 -1.299038 0 0 0 2.617994</pose></waypoint>
+          <waypoint><time>99.811017</time><pose>-0.860365 -1.228728 0 0 0 2.530727</pose></waypoint>
+          <waypoint><time>101.447263</time><pose>-0.964181 -1.149067 0 0 0 2.443461</pose></waypoint>
+          <waypoint><time>103.083509</time><pose>-1.060660 -1.060660 0 0 0 2.356194</pose></waypoint>
+          <waypoint><time>104.719755</time><pose>-1.149067 -0.964181 0 0 0 2.268928</pose></waypoint>
+          <waypoint><time>106.356001</time><pose>-1.228728 -0.860365 0 0 0 2.181662</pose></waypoint>
+          <waypoint><time>107.992247</time><pose>-1.299038 -0.750000 0 0 0 2.094395</pose></waypoint>
+          <waypoint><time>109.628494</time><pose>-1.359462 -0.633927 0 0 0 2.007129</pose></waypoint>
+          <waypoint><time>111.264740</time><pose>-1.409539 -0.513030 0 0 0 1.919862</pose></waypoint>
+          <waypoint><time>112.900986</time><pose>-1.448889 -0.388229 0 0 0 1.832596</pose></waypoint>
+          <waypoint><time>114.537232</time><pose>-1.477212 -0.260472 0 0 0 1.745329</pose></waypoint>
+          <waypoint><time>116.173478</time><pose>-1.494292 -0.130734 0 0 0 1.658063</pose></waypoint>
+          <waypoint><time>117.809725</time><pose>-1.500000 0.000000 0 0 0 1.570796</pose></waypoint>
+        </trajectory>
+      </script>
+    </actor>
+  </world>
+</sdf>
